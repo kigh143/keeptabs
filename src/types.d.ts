@@ -3,7 +3,7 @@ interface Project {
   name: string;
   description: string;
   created_at: string;
-  goals: string[];
+  goals: string;
 }
 
 interface Task {

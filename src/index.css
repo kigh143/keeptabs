@@ -1,0 +1,11 @@
+.intro {
+    height: 60vh;
+    padding-top: 30px;
+}
+.calendar{
+    height: 40vh;
+    width: 90%;
+    background-color: #eee;
+    margin: 15px auto;
+    border-radius: 10px;
+}

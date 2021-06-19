@@ -1,11 +1,17 @@
 import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import Navigation from "./Navigation";
+import { store, persistor } from "./redux/Store";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div>
-      <p>KeepTabs</p>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigation />
+      </PersistGate>
+    </Provider>
   );
-}
+};
 
 export default App;

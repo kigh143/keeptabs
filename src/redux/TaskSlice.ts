@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface TasktState {
+interface TaskState {
   tasks: Task[];
   selectedTask: any;
 }
 
-const initialState: TasktState = {
+const initialState: TaskState = {
   tasks: [],
   selectedTask: {},
 };
