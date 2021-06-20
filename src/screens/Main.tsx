@@ -10,35 +10,60 @@ import {
   FormGroup,
   Label,
   Input,
+  Card,
+  CardTitle,
+  CardText,
+  ButtonGroup,
 } from "reactstrap";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import {
+  addProject,
+  deletedProject,
+  setAsSelectedProject,
+} from "../redux/ProjectSlice";
+import { useHistory } from "react-router-dom";
+import { Row, Col } from "reactstrap";
+import Right from "../Components/Right";
 
 const Main: React.FC = () => {
-  const state = useSelector((state) => state.persistedReducer);
-  console.log(state);
-  const dispatch = useDispatch();
-
+  const {
+    project: { projects },
+  } = useAppSelector((state) => state.persistedReducer);
+  const dispatch = useAppDispatch();
+  const history = useHistory();
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const [backdrop, setBackdrop] = useState(true);
-  const [keyboard, setKeyboard] = useState(true);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [goals, setGoals] = useState("");
 
-  const addProject = () => {
-    const project = {
+  const add = () => {
+    const newProject = {
       name,
       goals,
       description,
       created_at: moment().format(),
       id: uuidv4(),
     };
+    dispatch(addProject(newProject));
+    toggle();
+  };
 
-    console.log(project);
+  const handleDelete = (id: string) => {
+    let result = window.confirm(
+      "Are you sure you want to delete this project?"
+    );
+    if (result) {
+      dispatch(deletedProject({ id }));
+    }
+  };
+
+  const select = (project: Project) => {
+    dispatch(setAsSelectedProject(project));
+    history.push("/project");
   };
 
   return (
@@ -70,24 +95,50 @@ const Main: React.FC = () => {
                   </p>
                 </Jumbotron>
               </div>
-              <div className="no_project"></div>
-              <div className="projects"></div>
-            </div>
-            <div className="col-md-4">
-              <div className="calendar"></div>
+              {projects.length === 0 && <div className="no_project"></div>}
+              {projects.length > 0 && (
+                <div className="projects">
+                  <br />
+                  <h3>All Projects</h3>
+                  <br />
+                  <Row xs="2">
+                    {projects.map((proj) => (
+                      <Col sm="6" style={{ marginBottom: 20 }}>
+                        <Card body>
+                          <CardTitle tag="h5">{proj.name}</CardTitle>
+                          <CardText>{proj.description}</CardText>
+                          <CardText>
+                            <small className="text-muted">
+                              {moment(proj.created_at, "YYYYMMDD").fromNow()}
+                            </small>
+                          </CardText>
 
-              <hr />
+                          <ButtonGroup>
+                            <Button
+                              color="primary"
+                              onClick={() => select(proj)}
+                            >
+                              View
+                            </Button>
+                            <Button
+                              color="danger"
+                              onClick={() => handleDelete(proj.id)}
+                            >
+                              Delete
+                            </Button>
+                          </ButtonGroup>
+                        </Card>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+              )}
             </div>
+            <Right />
           </div>
         </div>
       </section>
-      <Modal
-        isOpen={modal}
-        toggle={toggle}
-        // className={className}
-        backdrop={backdrop}
-        keyboard={keyboard}
-      >
+      <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Add Project</ModalHeader>
         <ModalBody>
           <FormGroup>
@@ -127,7 +178,7 @@ const Main: React.FC = () => {
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>
-          <Button color="primary" onClick={addProject}>
+          <Button color="primary" onClick={add}>
             Add Project
           </Button>
         </ModalFooter>

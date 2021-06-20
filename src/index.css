@@ -1,6 +1,9 @@
 .intro {
-    height: 60vh;
     padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    background-color: #eee;
+    margin: 20px auto;
 }
 .calendar{
     height: 40vh;
@@ -8,4 +11,38 @@
     background-color: #eee;
     margin: 15px auto;
     border-radius: 10px;
+}
+.no_project{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+
+.projects{
+    /* padding-left: 30px; */
+}
+
+
+.sideBar {
+    height: 90vh;
+    background-color: #eee;
+    padding-top: 20px;
+    position: relative;
+}
+
+.projectDetails{
+  padding: 10px;
+}
+
+.content{
+    margin-top: 20px;
+}
+
+.moveBottom{
+    position: absolute;
+    bottom: 20;
+    z-index: 1;
 }
