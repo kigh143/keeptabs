@@ -1,6 +1,6 @@
 import React from "react";
 
-const Notfound: React.FC = () => {
+const Lock: React.FC = () => {
   return (
     <div className="main">
       <section className="full">
@@ -8,9 +8,7 @@ const Notfound: React.FC = () => {
         <h1>KeepTabs</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
-          similique illo vel amet fugiat labore quisquam? Ea, explicabo vero
-          quasi consectetur atque asperiores! Ratione fugiat magnam totam, sunt
-          rem blanditiis.
+          similique illo vel amet fugiat labore quisquam?
         </p>
 
         <a href="/">Go back Home</a>
@@ -19,4 +17,4 @@ const Notfound: React.FC = () => {
   );
 };
 
-export default Notfound;
+export default Lock;

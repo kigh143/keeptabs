@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import moment from "moment";
 
 interface TaskState {
   tasks: Task[];
@@ -28,6 +29,22 @@ const TaskSlice = createSlice({
         return Task;
       });
     },
+    markAsComplete(state, actions) {
+      state.tasks = state.tasks.map((Task: Task) => {
+        if (Task.id === actions.payload.id) {
+          return { ...Task, completed: true, end_date: moment().format() };
+        }
+        return Task;
+      });
+    },
+    startTask(state, actions) {
+      state.tasks = state.tasks.map((task: Task) => {
+        if (task.id === actions.payload.id) {
+          return { ...task, started_date: moment().format() };
+        }
+        return task;
+      });
+    },
     deletedTask(state, actions) {
       state.tasks = state.tasks.filter((Task: Task) => {
         if (Task.id !== actions.payload.id) {
@@ -38,6 +55,12 @@ const TaskSlice = createSlice({
   },
 });
 
-export const { addTask, setAsSelectedTask, editTask, deletedTask } =
-  TaskSlice.actions;
+export const {
+  addTask,
+  setAsSelectedTask,
+  editTask,
+  deletedTask,
+  markAsComplete,
+  startTask,
+} = TaskSlice.actions;
 export default TaskSlice.reducer;

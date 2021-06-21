@@ -1,8 +1,18 @@
 import React from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
-const Sidebar: React.FC = () => {
+interface Props {
+  color: string;
+}
+
+const Sidebar: React.FC<Props> = ({ color }) => {
   return (
-    <section className="motivation">
+    <section className="motivation" style={{ backgroundColor: color }}>
+      <div className="calendar">
+        <Calendar className="cal" />
+      </div>
+
       <div className="quote">
         <h2 className="title">Quote of the day</h2>
         <p>

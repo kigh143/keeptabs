@@ -1,13 +1,17 @@
 import React from "react";
 
-const Header: React.FC = () => {
+interface Props {
+  color: string;
+}
+
+const Header: React.FC<Props> = ({ color }) => {
   return (
-    <header>
+    <header style={{ backgroundColor: color }}>
       <a href="/">KeepTabs</a>
       <nav>
         <ul>
           <li>
-            <a href="">Lock App</a>
+            <a href="/lock">Lock</a>
           </li>
         </ul>
       </nav>

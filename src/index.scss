@@ -41,14 +41,26 @@ body{
 }
 
 button{
-    // height:2.5em;
-    // padding: 0 3em; 
-    // font-family: 'Poppins', sans-serif;
-    // font-size: 1.2rem;
+     display:inline-block;
+     padding:0.35em 1.2em;
+     border:0.1em solid #FFFFFF;
+     margin:0 0.3em 0.3em 0;
+     border-radius:0.12em;
+     box-sizing: border-box;
+     text-decoration:none;
+     font-family:'Roboto',sans-serif;
+     font-weight:300;
+     color:#FFFFFF;
+     text-align:center;
+     transition: all 0.2s;
 }
 
 input:focus {
    border: none;
+}
+
+p{
+    font-weight: 300;
 }
 
 .main {
@@ -69,7 +81,6 @@ header {
     padding: 10px 1em;
     border-top-left-radius:$border-radius;
     border-top-right-radius: $border-radius;
-    border-bottom:2px solid #eee ;
     a {
         text-decoration: none;
         color:$header-color;
@@ -92,10 +103,44 @@ header {
     .project{
         height:  calc( 100vh - 100px);
         border-radius:$border-radius;
+        overflow-y: scroll;
         .hero{
             background-color: #fff;
             padding: 1em;
-            color:#333
+            color:#333;
+            height: 230px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .imgBox{
+                margin-right: 50px;
+                div{
+                    height: 180px;
+                    width: 180px;
+                    background-color: rgba(190, 144, 144, 0.719);
+                    border-radius: 90px;
+                    img{
+                        width: 110%;
+                    }
+                }
+            }
+
+            div{
+                h1{
+                    font-size: 2.4rem;
+                }
+                button{
+                    margin: 1em 0px;
+                }
+    
+                p{
+                    width:70%;
+                }
+            }
+
+          
+
         }
         .no_projects{
                display: flex;
@@ -120,7 +165,6 @@ header {
                  display: flex;
                  flex-wrap: wrap;
                  background-color: #f1f1f1;
-                 overflow-y: scroll;
 
                  .pro {
                     width:100%;
@@ -128,6 +172,7 @@ header {
                     border-radius:$border-radius;
                     margin:2%;
                     background-color: #fff;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
                     .color{
                         height: 120px;
                         background-color: rgb(214, 160, 160);
@@ -143,6 +188,7 @@ header {
                         }
                         .description{
                             font-size: .8rem;
+                            height: 70px;
                         }
     
                         .date {
@@ -213,7 +259,7 @@ header {
     box-shadow: -10px 1px 39px -1px rgba(153,152,152,0.66);
 
     .modal-header{
-        background-color: $header-bg;
+        background-color: #46b280;
         border-top-right-radius: $border-radius;
         display: flex;
         justify-content: space-between;
@@ -254,6 +300,14 @@ header {
                 border: 1px solid #aaa;
                 border-radius:$border-radius;
                 width: calc(100%-2em);
+                font-family: 'Poppins', sans-serif;
+            }
+            select{
+                height: 2em;
+                padding:.4em 1em;
+                border-radius:$border-radius;
+                width: calc(100%-2em);
+                font-family: 'Poppins', sans-serif;
             }
             .exp{
                 font-size: .6rem;
@@ -266,6 +320,7 @@ header {
                 border: 1px solid #aaa;
                 border-radius:$border-radius;
                 width: calc(100%-2em);
+                font-family: 'Poppins', sans-serif;
             }
         }
 
@@ -276,33 +331,51 @@ header {
     }
 }
 
+.task{
+    margin: .5em 1em;
+    background-color: #fff;
+    padding: .5em;
+    border-radius: $border-radius;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    .task__inner{
+        .task__title {
+            color:#333;
+            text-transform: uppercase;
+            font-size: .8rem;
+        }
+    
+        .task__description{
+         font-weight: 300;
+         font-size: .8rem;
+        }
+        .task__date{
+            font-size: .6rem;
+        }
+    }
+}
+
+.cal {
+    width: 100%;
+}
+
+
 
 @media only screen and (min-width: 768px){
     html {
         font-size: 16px;
     } 
-
-    .projects{
-        .projectList{
-            .pro{
-                width: 50%;
-            }
-        }
-    }
-
 }
 
 @media only screen and (min-width: 1020px){
     html {
         font-size: 17px;
     } 
-    .projects{
-        .projectList{
-            .pro{
-                width: 45%;
-            }
-        }
-    }
+   
 
     .main{
         width: 75%;
@@ -313,6 +386,17 @@ header {
         grid-template-columns: 70% auto;
         grid-template-rows: 70% auto;
         grid-template-areas: 'project quote' 'project learn';
+
+        .project{
+            .projects{
+                .projectList{
+                    .pro{
+                        width: 45%;
+                        background: #fff;
+                    }
+                }
+            }
+        }
      }
 
      section.project{
@@ -333,6 +417,39 @@ header {
     }
  
   
+}
+
+.full{
+    background-color: #46b280;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0px 4em;
+    color:#fff;
+    border-radius: $border-radius;
+
+    h1{
+        font-size: 3.4em;
+    }
+
+    img{
+        height: 160px;
+        width: 160px;
+    }
+
+    p  {
+        width: 60%;
+    }
+
+    a{
+        text-decoration: none;
+        color:#fff;
+        margin:2em auto;
+    }
 }
 
 @media only screen and (min-width: 1800px){

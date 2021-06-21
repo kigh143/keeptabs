@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { gsap, Power3 } from "gsap";
 import Header from "../Components/Header";
 import Sidebar from "../Components/Sidebar";
+import Project from "../Components/Project";
 
 const Main: React.FC = () => {
   const {
@@ -21,17 +22,18 @@ const Main: React.FC = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [goals, setGoals] = useState("");
-  const [isvisible, setIsVisible] = useState(false);
+  const [color, setColor] = useState("");
   const formRef = useRef(null);
 
-  const add = () => {
+  const add = (e: any) => {
+    e.preventDefault();
     const newProject = {
       name,
       goals,
       description,
       created_at: moment().format(),
       id: uuidv4(),
-      color: "red",
+      color,
     };
     dispatch(addProject(newProject));
   };
@@ -52,7 +54,6 @@ const Main: React.FC = () => {
 
   const closeModal = (e: any) => {
     e.preventDefault();
-    setIsVisible(false);
     gsap
       .from(formRef.current, {
         width: "0%",
@@ -72,22 +73,28 @@ const Main: React.FC = () => {
         ease: Power3.easeOut,
       })
       .pause();
-    setIsVisible(true);
   };
 
   return (
     <div className="main">
-      <Header />
+      <Header color="#46b280" />
 
       <section className="wrapper">
         <section className="project">
           <div className="hero">
-            <h2>Good morning, Katende</h2>
-            <p>
-              Manage your project and productivity, Get started by creating a
-              new project
-            </p>
-            <button onClick={() => openModal()}>Create Project</button>
+            <div className="imgBox">
+              <div>
+                <img src="../logo512.png" />
+              </div>
+            </div>
+            <div>
+              <h1>Good morning, Katende</h1>
+              <p>
+                Manage your project and productivity, Get started by creating a
+                new project
+              </p>
+              <button onClick={() => openModal()}>Create Project</button>
+            </div>
           </div>
           {projects.length === 0 && (
             <div className="no_projects">
@@ -100,46 +107,23 @@ const Main: React.FC = () => {
             </div>
           )}
 
-          <div className="projects">
-            <h2 className="title">Projects</h2>
-            <div className="projectList">
-              {projects.map((pro, index) => (
-                <div className="pro" key={index}>
-                  <div className="color">
-                    <h3 className="title">{pro.name}</h3>
-                  </div>
-                  <div className="inner">
-                    <p className="description">{pro.description}</p>
-                    <div className="actions">
-                      <a
-                        onClick={(e) => {
-                          e.preventDefault();
-                          select(pro);
-                        }}
-                      >
-                        View Project
-                      </a>
-                      <a href="#">Edit Project</a>
-                      <a
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleDelete(pro.id);
-                        }}
-                      >
-                        Delete Project
-                      </a>
-                    </div>
-                    <div className="pro-footer">
-                      <p className="date">{pro.created_at}</p>
-                      <p className="date">Done</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+          {projects.length > 0 && (
+            <div className="projects">
+              <h2 className="title">Projects</h2>
+              <div className="projectList">
+                {projects.map((project, index) => (
+                  <Project
+                    project={project}
+                    handleDelete={handleDelete}
+                    select={select}
+                    key={index}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </section>
-        <Sidebar />
+        <Sidebar color="#46b280" />
       </section>
 
       <div className="project-form" ref={formRef}>
@@ -155,28 +139,38 @@ const Main: React.FC = () => {
         <form className="form">
           <div className="field">
             <label htmlFor="">Project name</label>
-            <input type="text" />
+            <input type="text" onChange={(e) => setName(e.target.value)} />
           </div>
 
           <div className="field">
             <label htmlFor="">Project Color</label>
-            <input type="text" />
+            <input type="color" onChange={(e) => setColor(e.target.value)} />
             <small className="exp">project name </small>
           </div>
 
           <div className="field">
             <label htmlFor="">Project description</label>
-            <textarea cols={3} rows={5}></textarea>
+            <textarea
+              cols={3}
+              rows={5}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
             <small className="exp">project name </small>
           </div>
 
           <div className="field">
             <label htmlFor="">Project description</label>
-            <textarea cols={3} rows={5}></textarea>
+            <textarea
+              cols={3}
+              rows={5}
+              onChange={(e) => setGoals(e.target.value)}
+            ></textarea>
             <small className="exp">project name </small>
           </div>
 
-          <button className="form-btn">Create Project</button>
+          <button className="form-btn" onClick={(e) => add(e)}>
+            Create Project
+          </button>
         </form>
       </div>
     </div>

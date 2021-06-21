@@ -15,7 +15,7 @@ const ProjectSlice = createSlice({
   initialState,
   reducers: {
     addProject(state, actions: PayloadAction<Project>) {
-      state.projects.push(actions.payload);
+      state.projects.unshift(actions.payload);
     },
     setAsSelectedProject(state, actions: PayloadAction<Project>) {
       state.selectedProject = actions.payload;
