@@ -67,7 +67,7 @@ const Main: React.FC = () => {
   const openModal = () => {
     gsap
       .from(formRef.current, {
-        width: "70%",
+        width: "40%",
         opacity: 1,
         duration: 20,
         ease: Power3.easeOut,

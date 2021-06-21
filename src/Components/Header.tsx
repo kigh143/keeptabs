@@ -7,11 +7,11 @@ interface Props {
 const Header: React.FC<Props> = ({ color }) => {
   return (
     <header style={{ backgroundColor: color }}>
-      <a href="/">KeepTabs</a>
+      <a href="/home">KeepTabs</a>
       <nav>
         <ul>
           <li>
-            <a href="/lock">Lock</a>
+            <a href="/">Lock</a>
           </li>
         </ul>
       </nav>

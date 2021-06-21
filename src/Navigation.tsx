@@ -9,9 +9,9 @@ const Navigation: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Main} />
+        <Route path="/home" exact component={Main} />
         <Route path="/project" exact component={Project} />
-        <Route path="/lock" exact component={Lock} />
+        <Route path="/" exact component={Lock} />
         <Route component={Notfound} />
       </Switch>
     </BrowserRouter>

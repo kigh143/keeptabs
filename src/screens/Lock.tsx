@@ -11,7 +11,7 @@ const Lock: React.FC = () => {
           similique illo vel amet fugiat labore quisquam?
         </p>
 
-        <a href="/">Go back Home</a>
+        <a href="/home">Go back Home</a>
       </section>
     </div>
   );

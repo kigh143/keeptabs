@@ -13,7 +13,7 @@ const Notfound: React.FC = () => {
           rem blanditiis.
         </p>
 
-        <a href="/">Go back Home</a>
+        <a href="/home">Go back Home</a>
       </section>
     </div>
   );
