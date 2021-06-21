@@ -1,11 +1,17 @@
 import React from "react";
-import Menu from "./Menu";
 
 const Header: React.FC = () => {
   return (
-    <div>
-      <Menu />
-    </div>
+    <header>
+      <a href="/">KeepTabs</a>
+      <nav>
+        <ul>
+          <li>
+            <a href="">Lock App</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

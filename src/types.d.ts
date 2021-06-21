@@ -4,6 +4,7 @@ interface Project {
   description: string;
   created_at: string;
   goals: string;
+  color: string;
 }
 
 interface Task {

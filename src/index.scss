@@ -1,0 +1,357 @@
+$main-bg : #f1f1f1;
+$header-bg:#7ba8c0;
+$header-color:#fff;
+$quote-color-bg:orange;
+$border-radius:.5em;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;1,100&display=swap');
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 20px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(48, 47, 47); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0c0c0c; 
+  }
+
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+button{
+    // height:2.5em;
+    // padding: 0 3em; 
+    // font-family: 'Poppins', sans-serif;
+    // font-size: 1.2rem;
+}
+
+input:focus {
+   border: none;
+}
+
+.main {
+    width: 95%;
+    background-color: $main-bg;
+    height: 96vh;
+    margin: 2vh auto;
+    border-radius:$border-radius;
+    position: relative;
+}
+
+header {
+    background-color: $header-bg;
+    color:#fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 1em;
+    border-top-left-radius:$border-radius;
+    border-top-right-radius: $border-radius;
+    border-bottom:2px solid #eee ;
+    a {
+        text-decoration: none;
+        color:$header-color;
+        font-weight:bold;
+        text-transform: uppercase;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li a {
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+    }
+    height: 40px;
+}
+
+.wrapper{
+    .project{
+        height:  calc( 100vh - 100px);
+        border-radius:$border-radius;
+        .hero{
+            background-color: #fff;
+            padding: 1em;
+            color:#333
+        }
+        .no_projects{
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+               height: 50vh;
+               padding: 0px 50px;
+               text-align: center;
+               background-color: #eee;
+        }
+        .projects{
+            .title{
+                text-transform: uppercase;
+                font-size: 1rem;
+                padding: 1em;
+
+            }
+
+            .projectList{
+                 border-top:1px solid #eee;
+                 display: flex;
+                 flex-wrap: wrap;
+                 background-color: #f1f1f1;
+                 overflow-y: scroll;
+
+                 .pro {
+                    width:100%;
+                    border:none;
+                    border-radius:$border-radius;
+                    margin:2%;
+                    background-color: #fff;
+                    .color{
+                        height: 120px;
+                        background-color: rgb(214, 160, 160);
+                        border-top-left-radius:$border-radius;
+                        border-top-right-radius:$border-radius;
+                        display: flex;
+                        align-items: center;
+                     }
+                    .inner {
+                        padding: .5em 1em;
+                        .title {
+                            font-size: 1rem;
+                        }
+                        .description{
+                            font-size: .8rem;
+                        }
+    
+                        .date {
+                            font-size: .7rem;
+                            font-weight: bold;
+                        }
+    
+                        .pro-footer{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+
+                        .actions{
+                            margin:15px auto;
+                            padding-bottom: 10px;
+                            border-bottom: 1px solid #eee;
+                            a {
+                                margin-right: 30px;
+                                text-decoration: none;
+                                font-size: .8em;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                   
+                }
+            }
+
+           
+        }
+    }
+
+    .motivation{
+        height:  calc( 100vh - 100px);
+        border-bottom-right-radius:$border-radius;
+
+        background-color: $header-bg;
+        color: $header-color;
+         .quote {
+             padding: 1em;
+             .title{
+                text-transform: uppercase;
+                font-size: 1.2rem;
+            }
+
+            p{
+                font-size: .9rem;
+            }
+         }
+         .learn{
+             padding: 1em;
+         }
+    }
+    
+}
+
+.project-form{
+    background-color: #fff;
+    height: 100%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    opacity: 0;
+    border-left: 1px solid #eee;
+    box-shadow: -10px 1px 39px -1px rgba(153,152,152,0.66);
+
+    .modal-header{
+        background-color: $header-bg;
+        border-top-right-radius: $border-radius;
+        display: flex;
+        justify-content: space-between;
+        color:#fff;
+        align-items: center;
+        span{
+            margin-left: 1em;
+        }
+        a{
+            text-decoration: none;
+            color:#fff;
+            background-color: #04517a;
+            padding: 1em;
+            cursor: pointer;
+            border-top-right-radius: $border-radius;
+        }
+    }
+    .summary{
+        padding: 1em 10px;
+    }
+
+    .form{
+        width: 90%;
+        padding: 1em;
+
+        .field{
+            display: flex;
+            flex-direction: column;
+            margin-top:1em;
+            label{
+                color:#444;
+                font-size: .9rem;
+                margin-bottom: .6em;
+            }
+            input {
+                height: 2em;
+                padding:.4em 1em;
+                border: 1px solid #aaa;
+                border-radius:$border-radius;
+                width: calc(100%-2em);
+            }
+            .exp{
+                font-size: .6rem;
+                color:gray;
+                text-align: right;
+                margin-top: .4em;
+            }
+            textarea{
+                padding:.4em 1em;
+                border: 1px solid #aaa;
+                border-radius:$border-radius;
+                width: calc(100%-2em);
+            }
+        }
+
+        .form-btn{
+            width: 100%;
+            margin: 40px auto;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px){
+    html {
+        font-size: 16px;
+    } 
+
+    .projects{
+        .projectList{
+            .pro{
+                width: 50%;
+            }
+        }
+    }
+
+}
+
+@media only screen and (min-width: 1020px){
+    html {
+        font-size: 17px;
+    } 
+    .projects{
+        .projectList{
+            .pro{
+                width: 45%;
+            }
+        }
+    }
+
+    .main{
+        width: 75%;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 70% auto;
+        grid-template-rows: 70% auto;
+        grid-template-areas: 'project quote' 'project learn';
+     }
+
+     section.project{
+        grid-area: project;
+    }
+
+    section.quote{
+        grid-area: quote;
+    }
+
+
+    section.learn{
+        grid-area: learn;
+    }
+
+    body{
+        overflow: hidden;
+    }
+ 
+  
+}
+
+@media only screen and (min-width: 1800px){
+    html {
+        font-size: 18px;
+    }
+    .projects{
+        .projectList{
+            .pro{
+                width: 45%;
+            }
+        }
+    }
+    .main{
+        width: 75%;
+    }
+
+    body{
+        overflow: hidden;
+    }
+ 
+}
