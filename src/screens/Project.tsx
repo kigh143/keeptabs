@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { v4 as uuidv4 } from "uuid";
 import { addTask } from "../redux/TaskSlice";
@@ -18,6 +18,10 @@ const Project: React.FC = () => {
   const [level_of_difficulty, setLevel_of_difficulty] = useState("");
   const [expected_duration, setExpected_duration] = useState("");
   const formRef = useRef(null);
+  const [totals, setTotals] = useState({ totalTasks: 0, totalDays: 0 });
+  const project_tasks = tasks.filter(
+    (tsk) => tsk.project_id === selectedProject.id
+  );
 
   const createNewTask = (e: any) => {
     e.preventDefault();
@@ -68,6 +72,15 @@ const Project: React.FC = () => {
 
   const toggleTask = (task: Task) => {};
 
+  const calculate = () => {};
+
+  useEffect(() => {
+    const totalDays = project_tasks
+      .map((tsk) => tsk.expected_duration)
+      .reduce((number, sum) => sum + number, 0);
+    setTotals({ totalTasks: project_tasks.length, totalDays });
+  }, [tasks]);
+
   return (
     <div className="main">
       <Header color={selectedProject.color} />
@@ -77,6 +90,28 @@ const Project: React.FC = () => {
             <section>
               <h2>{selectedProject.name}</h2>
               <p>{selectedProject.description}</p>
+              <table className="table">
+                <tr>
+                  <th>Total Tasks</th>
+                  <th>Total Days</th>
+                  <th>Expected Speed</th>
+                </tr>
+                <tr>
+                  <td>
+                    <b>{totals.totalTasks}</b>
+                  </td>
+                  <td>
+                    <b>{totals.totalDays}</b>
+                  </td>
+                  <td>
+                    <b>
+                      {(totals.totalTasks / totals.totalDays).toFixed(2)} tasks
+                      per day
+                    </b>
+                  </td>
+                </tr>
+              </table>
+
               <button onClick={() => openModal()}>Add Task</button>
             </section>
           </div>
