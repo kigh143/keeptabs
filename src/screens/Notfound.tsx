@@ -9,7 +9,7 @@ const Notfound: React.FC = () => {
               <img src="./logo192.png" alt="" />
               <h2>Not Found</h2>
               <p>A place to be more productive and accountable</p>
-              <a href="/home"> Get Back In</a>
+              <a href="/keeptabs/home"> Get Back In</a>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const Lock: React.FC = () => {
               <small>locked</small>
               <h2>keepTabs</h2>
               <p>A place to be more productive and accountable</p>
-              <a href="/home"> Get Back In</a>
+              <a href="/keeptabs/home"> Get Back In</a>
             </div>
           </div>
         </div>

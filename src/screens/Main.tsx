@@ -61,7 +61,7 @@ const Main: React.FC = () => {
 
   const select = (project: Project) => {
     dispatch(setAsSelectedProject(project));
-    history.push("/project");
+    history.push("/keeptabs/project");
   };
 
   const closeModal = () => setShowModal(false);
