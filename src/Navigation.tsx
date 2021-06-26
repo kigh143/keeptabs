@@ -7,7 +7,7 @@ import Project from "./screens/Project";
 
 const Navigation: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/keeptabs">
       <Switch>
         <Route exact path="/home" component={Main} />
         <Route exact path="/project" component={Project} />
