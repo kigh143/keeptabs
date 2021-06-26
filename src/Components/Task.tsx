@@ -24,7 +24,7 @@ const Task: React.FC<Props> = ({ task }) => {
         <div className="project__taskActions">
           {task.started_date === "" ? (
             <button onClick={() => dispatch(startTask({ id: task.id }))}>
-              Start on Task
+              Start
             </button>
           ) : (
             <input

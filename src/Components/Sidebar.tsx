@@ -9,14 +9,14 @@ interface Props {
 const Sidebar: React.FC<Props> = ({ color }) => {
   return (
     <div className="menu">
-      <div className="companyLogo">
+      <div className="companyLogo shadow-sm">
         <img src="./logo192.png" alt="" />
         <h2>KeepTaps</h2>
       </div>
       <div className="links">
         <p>
           <a href="/home">
-            <i className="fa fa-square" aria-hidden="true"></i> Projects
+            <i className="fa fa-square" aria-hidden="true"></i>Projects
           </a>
         </p>
         <p>
@@ -26,7 +26,7 @@ const Sidebar: React.FC<Props> = ({ color }) => {
         </p>
         <p>
           <a href="/settings">
-            <i className="fa fa-cogs" aria-hidden="true"></i> Settings
+            <i className="fa fa-cogs" aria-hidden="true"></i>Settings
           </a>
         </p>
         <p>
@@ -52,7 +52,7 @@ const Sidebar: React.FC<Props> = ({ color }) => {
       </div>
       <div className="version">
         <small>KeepTabs V 1.0.0</small>
-        <a href="#">maintained by devsgwa</a>
+        <a href="#">maintained by ghkatende</a>
       </div>
     </div>
   );

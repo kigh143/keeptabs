@@ -4,7 +4,7 @@ const Lock: React.FC = () => {
   return (
     <main>
       <section className="glass">
-        <div>
+        <div className="closed">
           <div className="open">
             <div className="locked">
               <img src="./logo192.png" alt="" />

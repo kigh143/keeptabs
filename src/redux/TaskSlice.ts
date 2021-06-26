@@ -52,6 +52,14 @@ const TaskSlice = createSlice({
         }
       });
     },
+
+    deletedProjectTasks(state, actions) {
+      state.tasks = state.tasks.filter((Task: Task) => {
+        if (Task.project_id !== actions.payload.id) {
+          return { ...Task, ...actions.payload };
+        }
+      });
+    },
   },
 });
 
@@ -62,5 +70,6 @@ export const {
   deletedTask,
   markAsComplete,
   startTask,
+  deletedProjectTasks,
 } = TaskSlice.actions;
 export default TaskSlice.reducer;

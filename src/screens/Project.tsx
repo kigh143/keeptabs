@@ -18,7 +18,7 @@ const Project: React.FC = () => {
   const [level_of_difficulty, setLevel_of_difficulty] = useState("");
   const [expected_duration, setExpected_duration] = useState("");
   const formRef = useRef(null);
-  const [totals, setTotals] = useState({ totalTasks: 0, totalDays: 0 });
+  const [totals, setTotals] = useState({ totalTasks: 1, totalDays: 1 });
   const project_tasks = tasks.filter(
     (tsk) => tsk.project_id === selectedProject.id
   );
@@ -37,37 +37,15 @@ const Project: React.FC = () => {
       completed: false,
     };
     dispatch(addTask(newTask));
-    gsap
-      .from(formRef.current, {
-        width: "0%",
-        opacity: 0,
-        duration: 20,
-        ease: Power3.easeOut,
-      })
-      .pause();
+    reset();
   };
 
-  const closeModal = (e: any) => {
-    e.preventDefault();
-    gsap
-      .from(formRef.current, {
-        width: "0%",
-        opacity: 0,
-        duration: 20,
-        ease: Power3.easeOut,
-      })
-      .pause();
-  };
-
-  const openModal = () => {
-    gsap
-      .from(formRef.current, {
-        width: "70%",
-        opacity: 1,
-        duration: 20,
-        ease: Power3.easeOut,
-      })
-      .pause();
+  const reset = () => {
+    setDescription("");
+    setDescription("");
+    setExpected_duration("");
+    setTitle("");
+    setLevel_of_difficulty("");
   };
 
   useEffect(() => {
@@ -108,7 +86,8 @@ const Project: React.FC = () => {
                         <b>Expected Speed</b>
                       </small>
                       <p>
-                        {totals.totalDays} <small>t/d</small>
+                        {(totals.totalTasks / totals.totalDays).toFixed(2)}{" "}
+                        <span>t/d</span>
                       </p>
                     </div>
                     <div className="project_stat">
@@ -116,7 +95,8 @@ const Project: React.FC = () => {
                         <b>Your Speed</b>
                       </small>
                       <p>
-                        {totals.totalTasks} <small>t/d</small>
+                        {(totals.totalTasks / totals.totalDays).toFixed(2)}{" "}
+                        <span>t/d</span>
                       </p>
                     </div>
                   </div>
@@ -126,18 +106,21 @@ const Project: React.FC = () => {
               <div className="project__taskList">
                 <div className="tasks">
                   <h4>Project tasks</h4>
-                  {tasks.map((task, index) => (
+                  {project_tasks.map((task, index) => (
                     <Task key={index} task={task} />
                   ))}
                 </div>
 
                 <div className="task_form">
-                  <form className="form">
+                  <h4>Add New Tasks</h4>
+
+                  <form className="form shadow-lg">
                     <div className="field">
                       <label htmlFor="">Task</label>
                       <input
                         type="text"
                         onChange={(e) => setTitle(e.target.value)}
+                        value={title}
                       />
                     </div>
 
@@ -160,6 +143,7 @@ const Project: React.FC = () => {
                       <input
                         type="number"
                         onChange={(e) => setExpected_duration(e.target.value)}
+                        value={expected_duration}
                       />
                     </div>
 
@@ -167,8 +151,9 @@ const Project: React.FC = () => {
                       <label htmlFor="">Task description</label>
                       <textarea
                         cols={3}
-                        rows={5}
+                        rows={3}
                         onChange={(e) => setDescription(e.target.value)}
+                        value={description}
                       ></textarea>
                       <small className="exp">project name </small>
                     </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 
 interface Props {
   project: Project;
@@ -15,7 +16,7 @@ const Project: React.FC<Props> = ({ project, handleDelete, select }) => {
           style={{ backgroundColor: project.color }}
         >
           <h2>{project.name}</h2>
-          <p>{project.created_at}</p>
+          <p>{moment(project.created_at, "YYYYMMDD").fromNow()}</p>
         </div>
         <div className="project__details">
           <p>{project.description}</p>
