@@ -15,6 +15,8 @@ const Lock: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className="circle1"></div>
+        <div className="circle2"></div>
       </section>
     </main>
   );
