@@ -8,23 +8,53 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ color }) => {
   return (
-    <section className="motivation" style={{ backgroundColor: color }}>
-      <div className="calendar">
-        <Calendar className="cal" />
+    <div className="menu">
+      <div className="companyLogo">
+        <img src="./logo192.png" alt="" />
+        <h2>KeepTaps</h2>
       </div>
-
-      <div className="quote">
-        <h2 className="title">Quote of the day</h2>
+      <div className="links">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium,
-          dolor?
+          <a href="/home">
+            <i className="fa fa-square" aria-hidden="true"></i> Projects
+          </a>
         </p>
-      </div>
+        <p>
+          <a href="/stats">
+            <i className="fa fa-pie-chart" aria-hidden="true"></i>Stats
+          </a>
+        </p>
+        <p>
+          <a href="/settings">
+            <i className="fa fa-cogs" aria-hidden="true"></i> Settings
+          </a>
+        </p>
+        <p>
+          <a href="/">
+            <i className="fa fa-lock" aria-hidden="true"></i>Lock App
+          </a>
+        </p>
 
-      <div className="learn">
-        <p>Learn new things below</p>
+        {/* <div className="selectedProjectMenu">
+          <p>Select project name</p>
+          <ul>
+            <li className="completed">
+              <a href=""> Completed</a>
+            </li>
+            <li className="running">
+              <a href=""> Running</a>
+            </li>
+            <li className="pending">
+              <a href=""> Pending</a>
+            </li>
+          </ul>
+        </div> */}
       </div>
-    </section>
+      <div className="version">
+        <small>KeepTabs V 1.0.0</small>
+        <a href="#">maintained by devsgwa</a>
+      </div>
+    </div>
   );
 };
 

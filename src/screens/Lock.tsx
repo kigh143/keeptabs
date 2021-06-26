@@ -2,18 +2,21 @@ import React from "react";
 
 const Lock: React.FC = () => {
   return (
-    <div className="main">
-      <section className="full">
-        <img src="../logo512.png" />
-        <h1>KeepTabs</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
-          similique illo vel amet fugiat labore quisquam?
-        </p>
-
-        <a href="/home">Go back Home</a>
+    <main>
+      <section className="glass">
+        <div>
+          <div className="open">
+            <div className="locked">
+              <img src="./logo192.png" alt="" />
+              <small>locked</small>
+              <h2>keepTabs</h2>
+              <p>A place to be more productive and accountable</p>
+              <a href="/home"> Get Back In</a>
+            </div>
+          </div>
+        </div>
       </section>
-    </div>
+    </main>
   );
 };
 

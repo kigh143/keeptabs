@@ -8,37 +8,48 @@ interface Props {
 
 const Project: React.FC<Props> = ({ project, handleDelete, select }) => {
   return (
-    <div className="pro">
-      <div className="color" style={{ backgroundColor: project.color }}>
-        <h3 className="title">{project.name}</h3>
-      </div>
-      <div className="inner">
-        <p className="description">{project.description}</p>
-        <div className="actions">
-          <a
-            onClick={(e) => {
-              e.preventDefault();
-              select(project);
-            }}
-          >
-            View Project
-          </a>
-          <a href="#">Edit Project</a>
-          <a
-            onClick={(e) => {
-              e.preventDefault();
-              handleDelete(project.id);
-            }}
-          >
-            Delete Project
-          </a>
+    <>
+      <div className="project__card shadow-md">
+        <div
+          className="project__header"
+          style={{ backgroundColor: project.color }}
+        >
+          <h2>{project.name}</h2>
+          <p>{project.created_at}</p>
         </div>
-        <div className="pro-footer">
-          <p className="date">{project.created_at}</p>
-          <p className="date">Done</p>
+        <div className="project__details">
+          <p>{project.description}</p>
+        </div>
+        <div className="project__action">
+          <div>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                select(project);
+              }}
+            >
+              <i className="fa fa-eye" aria-hidden="true"></i> view project
+            </a>
+          </div>
+          <div>
+            <a href="#">
+              <i className="fa fa-check-square-o" aria-hidden="true"></i>
+              Mark as complete
+            </a>
+          </div>
+          <div>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                handleDelete(project.id);
+              }}
+            >
+              <i className="fa fa-trash" aria-hidden="true"></i> Delete Project
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

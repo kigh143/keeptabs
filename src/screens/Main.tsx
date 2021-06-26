@@ -9,9 +9,8 @@ import {
 } from "../redux/ProjectSlice";
 import { useHistory } from "react-router-dom";
 import { gsap, Power3 } from "gsap";
-import Header from "../Components/Header";
-import Sidebar from "../Components/Sidebar";
 import Project from "../Components/Project";
+import Sidebar from "../Components/Sidebar";
 
 const Main: React.FC = () => {
   const {
@@ -76,66 +75,44 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="main">
-      <Header color="#46b280" />
-
-      <section className="wrapper">
-        <section className="project">
-          <div className="hero">
-            <div className="imgBox">
-              <div>
-                <img src="../logo512.png" />
+    <main>
+      <section className="glass">
+        <div className="open">
+          <Sidebar color="" />
+          <div className="content">
+            <div className="projects">
+              <div className="greetings shadow-lg">
+                <div>
+                  <p>26 June 2021</p>
+                  <h1>Good morning katende</h1>
+                  <p>motivational quote Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div>
+                  <button>Create project button</button>
+                </div>
               </div>
-            </div>
-            <div>
-              <h1>Good morning, Katende</h1>
-              <p>
-                Manage your project and productivity, Get started by creating a
-                new project
-              </p>
-              <button onClick={() => openModal()}>Create Project</button>
+
+              <div className="list">
+                <h4 className="list-title">Projects list</h4>
+
+                <div className="projectRow">
+                  {projects.map((project, index) => (
+                    <Project
+                      project={project}
+                      handleDelete={handleDelete}
+                      select={select}
+                      key={index}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-          {projects.length === 0 && (
-            <div className="no_projects">
-              <h2 className="title">No Projects</h2>
-              <p className="summary">
-                Get start try with a sample project, it could be learning
-                something new
-              </p>
-              <button>Create Project</button>
-            </div>
-          )}
-
-          {projects.length > 0 && (
-            <div className="projects">
-              <h2 className="title">Projects</h2>
-              <div className="projectList">
-                {projects.map((project, index) => (
-                  <Project
-                    project={project}
-                    handleDelete={handleDelete}
-                    select={select}
-                    key={index}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-        <Sidebar color="#46b280" />
-      </section>
-
-      <div className="project-form" ref={formRef}>
-        <div className="modal-header">
-          <span>Create New Project</span>
-          <a onClick={(e) => closeModal(e)}>Close</a>
         </div>
-        <p className="summary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
-          aliquid!
-        </p>
-
+      </section>
+      <div className="circle1"></div>
+      <div className="circle2"></div>
+      <div>
         <form className="form">
           <div className="field">
             <label htmlFor="">Project name</label>
@@ -173,7 +150,7 @@ const Main: React.FC = () => {
           </button>
         </form>
       </div>
-    </div>
+    </main>
   );
 };
 

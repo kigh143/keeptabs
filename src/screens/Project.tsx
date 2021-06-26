@@ -70,10 +70,6 @@ const Project: React.FC = () => {
       .pause();
   };
 
-  const toggleTask = (task: Task) => {};
-
-  const calculate = () => {};
-
   useEffect(() => {
     const totalDays = project_tasks
       .map((tsk) => tsk.expected_duration)
@@ -82,119 +78,126 @@ const Project: React.FC = () => {
   }, [tasks]);
 
   return (
-    <div className="main">
-      <Header color={selectedProject.color} />
-      <section className="wrapper">
-        <section className="project">
-          <div className="hero">
-            <section>
-              <h2>{selectedProject.name}</h2>
-              <p>{selectedProject.description}</p>
-              <table className="table">
-                <tr>
-                  <th>Total Tasks</th>
-                  <th>Total Days</th>
-                  <th>Expected Speed</th>
-                </tr>
-                <tr>
-                  <td>
-                    <b>{totals.totalTasks}</b>
-                  </td>
-                  <td>
-                    <b>{totals.totalDays}</b>
-                  </td>
-                  <td>
-                    <b>
-                      {(totals.totalTasks / totals.totalDays).toFixed(2)} tasks
-                      per day
-                    </b>
-                  </td>
-                </tr>
-              </table>
+    <main>
+      <section className="glass">
+        <div className="open">
+          <Sidebar color="" />
+          <div className="content">
+            <div className="project">
+              <div
+                className="project__detailsHeader shadow-lg"
+                style={{
+                  backgroundColor: selectedProject.color,
+                  color: "#fff",
+                }}
+              >
+                <div className="project__detail">
+                  <h1>{selectedProject.name}</h1>
+                  <p>{selectedProject.description}</p>
+                </div>
+                <div className="project__stats">
+                  <div className="project_statBox">
+                    <div className="project_stat">
+                      <small>
+                        <b>Tasks</b>
+                      </small>
+                      <p>{totals.totalTasks}</p>
+                    </div>
+                    <div className="project_stat">
+                      <small>
+                        <b>Expected Speed</b>
+                      </small>
+                      <p>
+                        {totals.totalDays} <small>t/d</small>
+                      </p>
+                    </div>
+                    <div className="project_stat">
+                      <small>
+                        <b>Your Speed</b>
+                      </small>
+                      <p>
+                        {totals.totalTasks} <small>t/d</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <button onClick={() => openModal()}>Add Task</button>
-            </section>
-          </div>
-          {tasks.filter((tsk) => tsk.project_id === selectedProject.id)
-            .length === 0 && (
-            <div className="no_projects">
-              <h2 className="title">No Tasks</h2>
-              <p className="summary">
-                Get start try with a sample task. For example: Create all
-                required assets
-              </p>
-              <button onClick={() => openModal()}>Add Task</button>
-            </div>
-          )}
-          {tasks.filter((tsk) => tsk.project_id === selectedProject.id).length >
-            0 && (
-            <div className="projects">
-              <h2 className="title">All Tasks</h2>
-              <div className="projectList">
-                {tasks
-                  .filter((tsk) => tsk.project_id === selectedProject.id)
-                  .map((task, index) => (
-                    <Task task={task} key={index} toggleTask={toggleTask} />
+              <div className="project__taskList">
+                <div className="tasks">
+                  <h4>Project tasks</h4>
+                  {tasks.map((task, index) => (
+                    <Task key={index} task={task} />
                   ))}
+                </div>
+
+                <div className="task_form">
+                  <form className="form">
+                    <div className="field">
+                      <label htmlFor="">Task</label>
+                      <input
+                        type="text"
+                        onChange={(e) => setTitle(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="">Level of difficulty</label>
+                      <select
+                        onChange={(e) => setLevel_of_difficulty(e.target.value)}
+                      >
+                        <option></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="">Estimated duration (in days)</label>
+                      <input
+                        type="number"
+                        onChange={(e) => setExpected_duration(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="field">
+                      <label htmlFor="">Task description</label>
+                      <textarea
+                        cols={3}
+                        rows={5}
+                        onChange={(e) => setDescription(e.target.value)}
+                      ></textarea>
+                      <small className="exp">project name </small>
+                    </div>
+
+                    <button
+                      className="form-btn"
+                      onClick={(e) => createNewTask(e)}
+                    >
+                      Add Task
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
-          )}
-        </section>
-        <Sidebar color={selectedProject.color} />
-      </section>
-
-      <div className="project-form" ref={formRef}>
-        <div className="modal-header">
-          <span>Create Task</span>
-          <a onClick={(e) => closeModal(e)}>Close</a>
+          </div>
         </div>
-        <p className="summary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
-          aliquid!
-        </p>
-
-        <form className="form">
-          <div className="field">
-            <label htmlFor="">Task</label>
-            <input type="text" onChange={(e) => setTitle(e.target.value)} />
+        <div className="closed">
+          <div className="locked">
+            <img src="./logo.png" alt="" />
+            <small>locked</small>
+            <h2>keepTabs</h2>
+            <p>A place to be more productive and accountable</p>
+            <a href="#"> Get Back In</a>
           </div>
-
-          <div className="field">
-            <label htmlFor="">Level of difficulty</label>
-            <select onChange={(e) => setLevel_of_difficulty(e.target.value)}>
-              <option></option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-
-          <div className="field">
-            <label htmlFor="">Estimated duration (in days)</label>
-            <input
-              type="number"
-              onChange={(e) => setExpected_duration(e.target.value)}
-            />
-          </div>
-
-          <div className="field">
-            <label htmlFor="">Task description</label>
-            <textarea
-              cols={3}
-              rows={5}
-              onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-            <small className="exp">project name </small>
-          </div>
-
-          <button className="form-btn" onClick={(e) => createNewTask(e)}>
-            Add Task
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
+      </section>
+      <div className="circle1"></div>
+      <div className="circle2"></div>
+    </main>
   );
 };
 
