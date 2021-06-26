@@ -239,12 +239,8 @@ main{
 
 .projects{
     width: 100%;
-    /* display: none; */
 }
 
-.content .project {
-    /* display: none; */
-}
 
 .greetings{
     height: 22vh;
