@@ -15,22 +15,22 @@ const Sidebar: React.FC<Props> = ({ color }) => {
       </div>
       <div className="links">
         <p>
-          <a href="/home">
+          <a href="/keeptabs/home">
             <i className="fa fa-square" aria-hidden="true"></i>Projects
           </a>
         </p>
         <p>
-          <a href="/stats">
+          <a href="/keeptabs/stats">
             <i className="fa fa-pie-chart" aria-hidden="true"></i>Stats
           </a>
         </p>
         <p>
-          <a href="/settings">
+          <a href="/keeptabs/settings">
             <i className="fa fa-cogs" aria-hidden="true"></i>Settings
           </a>
         </p>
         <p>
-          <a href="/">
+          <a href="/keeptabs">
             <i className="fa fa-lock" aria-hidden="true"></i>Lock App
           </a>
         </p>
