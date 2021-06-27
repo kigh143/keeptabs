@@ -57,7 +57,7 @@ const Project: React.FC = () => {
       .map((tsk) => tsk.expected_duration)
       .reduce((number, sum) => sum + number, 0);
     setTotals({ totalTasks: project_tasks.length, totalDays });
-  }, [tasks]);
+  }, [tasks, project_tasks]);
 
   return (
     <main>

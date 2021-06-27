@@ -464,7 +464,6 @@ input {
     height: 3em;
     padding:.4em 1em;
     border: 1px solid #aaa;
-    width: calc(100%-2em);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -477,7 +476,6 @@ input[type=text]:focus {
 select{
     height: 3em;
     padding:.3em 1em;
-    width: calc(100%-2em);
     font-family: 'Poppins', sans-serif;
     background-color: #fff;
     border: 1px solid #aaa;
@@ -491,7 +489,6 @@ select{
 textarea{
     padding:.4em 1em;
     border: 1px solid #aaa;
-    width: calc(100%-2em);
     font-family: 'Poppins', sans-serif;
 }
 
