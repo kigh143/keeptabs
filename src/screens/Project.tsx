@@ -17,11 +17,15 @@ const Project: React.FC = () => {
   const [description, setDescription] = useState("");
   const [level_of_difficulty, setLevel_of_difficulty] = useState("");
   const [expected_duration, setExpected_duration] = useState("");
-  const formRef = useRef(null);
   const [totals, setTotals] = useState({ totalTasks: 1, totalDays: 1 });
   const project_tasks = tasks.filter(
     (tsk) => tsk.project_id === selectedProject.id
   );
+
+  const completed_tasks = project_tasks.filter((tsk) => tsk.completed === true);
+  const daysFinished = completed_tasks
+    .map((tsk) => tsk.expected_duration)
+    .reduce((number, sum) => sum + number, 0);
 
   const createNewTask = (e: any) => {
     e.preventDefault();
@@ -95,7 +99,7 @@ const Project: React.FC = () => {
                         <b>Your Speed</b>
                       </small>
                       <p>
-                        {(totals.totalTasks / totals.totalDays).toFixed(2)}{" "}
+                        {(completed_tasks.length / daysFinished).toFixed(2)}{" "}
                         <span>t/d</span>
                       </p>
                     </div>
@@ -107,14 +111,17 @@ const Project: React.FC = () => {
                 <div className="tasks">
                   <h4>Project tasks</h4>
                   {project_tasks.map((task, index) => (
-                    <Task key={index} task={task} />
+                    <Task
+                      key={index}
+                      task={task}
+                      btnColor={selectedProject.color}
+                    />
                   ))}
                 </div>
 
                 <div className="task_form">
-                  <h4>Add New Tasks</h4>
-
                   <form className="form shadow-lg">
+                    <h4>Add New Tasks</h4>
                     <div className="field">
                       <label htmlFor="">Task</label>
                       <input
@@ -161,6 +168,7 @@ const Project: React.FC = () => {
                     <button
                       className="form-btn"
                       onClick={(e) => createNewTask(e)}
+                      style={{ backgroundColor: selectedProject.color }}
                     >
                       Add Task
                     </button>

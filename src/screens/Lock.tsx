@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Lock: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const Lock: React.FC = () => {
               <small>locked</small>
               <h2>keepTabs</h2>
               <p>A place to be more productive and accountable</p>
-              <a href="/keeptabs/home"> Get Back In</a>
+              <Link to="/keeptabs/home"> Get Back In</Link>
             </div>
           </div>
         </div>

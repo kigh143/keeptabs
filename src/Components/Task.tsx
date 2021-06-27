@@ -4,9 +4,10 @@ import { useAppDispatch } from "../redux/hook";
 
 interface Props {
   task: Task;
+  btnColor: string;
 }
 
-const Task: React.FC<Props> = ({ task }) => {
+const Task: React.FC<Props> = ({ task, btnColor }) => {
   const dispatch = useAppDispatch();
   return (
     <>
@@ -17,13 +18,19 @@ const Task: React.FC<Props> = ({ task }) => {
           backgroundColor: task.completed ? "#f3f3f3" : "#fff",
         }}
       >
-        <div className="project__taskInfo">
-          <p className="font-semibold">{task.title}</p>
+        <div className={`project__taskInfo level${task.level_of_difficulty}`}>
+          <p className={`font-semibold levelText${task.level_of_difficulty}`}>
+            {task.title}
+          </p>
           <small>{task.description}</small>
         </div>
         <div className="project__taskActions">
           {task.started_date === "" ? (
-            <button onClick={() => dispatch(startTask({ id: task.id }))}>
+            <button
+              className="startBtn shadow-lg"
+              onClick={() => dispatch(startTask({ id: task.id }))}
+              style={{ backgroundColor: btnColor }}
+            >
               Start
             </button>
           ) : (

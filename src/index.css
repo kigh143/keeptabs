@@ -36,7 +36,8 @@ body{
 }
 main{
     min-height: 100vh;
-    background: linear-gradient(to right top, #b5f0e5, #4bdbf1);
+    /* background: linear-gradient(to right top, #b5f0e5, #4bdbf1); */
+    background-color: red;
     position: relative;
     display: flex;
     justify-content: center;
@@ -50,9 +51,11 @@ main{
     position: absolute;
     height: 85vh;
     width: 75%;
-    border-radius: 1.5rem;
     z-index: 10;
     backdrop-filter: blur(1rem);
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+
 }
 
 .circle1, .circle2{
@@ -126,12 +129,12 @@ main{
 .open{
     display: flex;
     height: 100%;
+    
 }
 
 .open .menu {
-    background-color: rgba(255, 255, 255, 0.397);
-    height: 100%;
-    width: 30%;
+    background-color: rgba(0, 0, 0, 0.281);
+    width: 25%;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
 }
@@ -143,9 +146,9 @@ main{
     align-items: center;
     flex-direction: column;
     text-transform: capitalize;
-    color: #555;
-    background-color: #f1f1f1;
+    background-color: rgba(0, 0, 0, 0.418);
     border-top-left-radius: 1.5rem;
+    color:#fff;
 
 }
 .companyLogo img{
@@ -157,19 +160,27 @@ main{
     margin: .6em auto;
 }
 
+.companyLogo h2{
+   font-size: 18px;
+   font-weight: bold;
+   margin:10px auto;
+}
+
 .menu .links{
-    padding: 1em;
+    padding: 1em 1em;
     height: 63%;
-    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color:#fff;
+    padding-left: 20px;
 }
 
 
 .links p{
   font-size: 1rem;
   font-weight: 400;
-  color: #444;
   padding: .8em 0;
   transition: all .3s;
+  color:#fff;
 }
 
 .links p:hover {
@@ -179,6 +190,7 @@ main{
 
 .links p a i {
   margin-right: 20px;
+  color:#fff;
 }
 
 .selectedProjectMenu{
@@ -193,7 +205,6 @@ main{
 
 .completed, .running, .pending {
   padding: 10px;
-  background: rgba(255, 255, 255, 0.377);
   margin: .6em auto;
 }
 
@@ -205,61 +216,53 @@ main{
     height: 10%;
     padding:0px 1em;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-top:1px solid #eee;
+    border-bottom-left-radius: 1.5rem;
+    color:rgb(193, 255, 249);
+
 }
 
 .version a {
     font-size: 12px;
     text-decoration: none;
-    color:#555;
     text-align: center;
 }
 
 .version small {
     font-size: 12px;
-    color:#222;
     font-weight: 600;
     text-align: center;
 }
-
-
 
 /* content area stuff */
 
 .content {
     color:#444;
     width: 100%;
-    border-top-right-radius: 1.5rem;
     overflow-y: scroll;
-
-
 }
 
 .projects{
     width: 100%;
 }
 
-
 .greetings{
-    height: 22vh;
+    height: 60px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    border-top-right-radius: 1.5rem;
-    background-color: rgba(5, 156, 202, 0.493);
     color:rgb(29, 28, 28);
+    background-color: rgba(255, 255, 255, 0.568);
 }
-
-
 
 .greetings h2 {
     font-size: 2rem;
 }
-
 
 .list{
     padding: 1.6rem;
@@ -339,8 +342,6 @@ main{
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-
 
 .project__detailsHeader {
     display: flex;
@@ -438,6 +439,7 @@ margin-bottom: 16px;
 
 .project__taskInfo{
     flex-grow: 1;
+    padding-left: 10px;
 }
 
 .project__taskActions{
@@ -447,14 +449,12 @@ margin-bottom: 16px;
    justify-content: flex-end;
 }
 
-
-
 .field{
     display: flex;
     flex-direction: column;
     margin-top:1em;
-   
 }
+
 label{
     color:#444;
     font-size: .9rem;
@@ -556,7 +556,7 @@ button:hover{
 }
 
 .topBarBtn {
-    background-color: rgba(5, 156, 202, 0.596);
+    background-color: rgba(4, 93, 121, 0.596);
     height: 100%;
     cursor: pointer;
     display: flex;
@@ -565,12 +565,60 @@ button:hover{
     padding:1em;
     width: 20%;
     color: #fff;
-
+    font-weight: bold;
 }
 
 .greetings div{
     padding: 1em;
-    background-color: rgba(93, 236, 213, 0.192);
     height: 100%;
     width: 80%;
+ }
+
+
+ .level1{
+    border-left: 5px solid rgb(11, 187, 114);
+ }
+
+ .level2{
+    border-left: 5px solid rgb(216, 151, 12);
+ }
+
+
+ .level3{
+    border-left: 5px solid rgb(11, 138, 189);
+ }
+
+ .level4{
+    border-left: 5 solid rgb(225, 0, 255);
+ }
+
+ .level5{
+    border-left: 5 solid rgb(165, 33, 33);
+ }
+
+ .levelText1 { color: rgb(11, 187, 114)}
+ .levelText2 { color: rgb(216, 151, 12)}
+ .levelText3 { color: rgb(11, 138, 189)}
+ .levelText4 { color: rgb(225, 0, 255);}
+ .levelText5 { color: rgb(165, 33, 33)}
+
+ .startBtn {
+     height: 50px;
+     width: 50px;
+     color:#fff;
+     border: none;
+     cursor: pointer;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     border-radius: 25px;
+     padding: 0;
+     font-size: 14px;
+    opacity: .8;
+    transition: all .4s;
+
+ }
+
+ .startBtn:hover {
+    opacity: 1;
  }

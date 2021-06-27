@@ -93,16 +93,9 @@ const Main: React.FC = () => {
             <div className="projects">
               <div className="greetings shadow-lg">
                 <div>
-                  <p style={{ textTransform: "uppercase" }}>
-                    <small>
-                      <b>{moment().format("h:mm a | dddd MMM D YYYY")}</b>
-                    </small>
+                  <p>
+                    <b>Projects</b>
                   </p>
-                  <br />
-                  <h2 className="text-gray-600">
-                    <b>Good {greeting} katende</b>
-                  </h2>
-                  <p>motivational quote Lorem ipsum dolor sit amet.</p>
                 </div>
                 <a
                   className="topBarBtn"
@@ -116,7 +109,16 @@ const Main: React.FC = () => {
               </div>
 
               <div className="list">
-                <h4 className="list-title">Projects list</h4>
+                <div>
+                  <h2 className="text-gray-600">
+                    <b>Good {greeting} katende</b>
+                  </h2>
+                  <p>motivational quote Lorem ipsum dolor sit amet.</p>
+                </div>
+                <br />
+                <h4 className="list-title">
+                  <b>Projects list</b>
+                </h4>
 
                 <div className="projectRow">
                   {projects.map((project, index) => (

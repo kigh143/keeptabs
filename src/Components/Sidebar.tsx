@@ -1,5 +1,7 @@
 import React from "react";
 import Calendar from "react-calendar";
+import moment from "moment";
+import { Link } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
 
 interface Props {
@@ -11,44 +13,29 @@ const Sidebar: React.FC<Props> = ({ color }) => {
     <div className="menu">
       <div className="companyLogo shadow-sm">
         <img src="./logo192.png" alt="" />
-        <h2>KeepTaps</h2>
+        <h2>KeepTabs</h2>
       </div>
       <div className="links">
         <p>
-          <a href="/keeptabs/home">
+          <Link to="/keeptabs/home">
             <i className="fa fa-square" aria-hidden="true"></i>Projects
-          </a>
+          </Link>
         </p>
         <p>
-          <a href="/keeptabs/stats">
-            <i className="fa fa-pie-chart" aria-hidden="true"></i>Stats
-          </a>
+          <Link to="/keeptabs/statistics">
+            <i className="fa fa-pie-chart" aria-hidden="true"></i>Statistics
+          </Link>
         </p>
         <p>
-          <a href="/keeptabs/settings">
+          <Link to="/keeptabs/settings">
             <i className="fa fa-cogs" aria-hidden="true"></i>Settings
-          </a>
+          </Link>
         </p>
         <p>
-          <a href="/keeptabs">
+          <Link to="/keeptabs">
             <i className="fa fa-lock" aria-hidden="true"></i>Lock App
-          </a>
+          </Link>
         </p>
-
-        {/* <div className="selectedProjectMenu">
-          <p>Select project name</p>
-          <ul>
-            <li className="completed">
-              <a href=""> Completed</a>
-            </li>
-            <li className="running">
-              <a href=""> Running</a>
-            </li>
-            <li className="pending">
-              <a href=""> Pending</a>
-            </li>
-          </ul>
-        </div> */}
       </div>
       <div className="version">
         <small>KeepTabs V 1.0.0</small>

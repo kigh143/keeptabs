@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Notfound: React.FC = () => {
   return (
     <main>
@@ -9,7 +10,7 @@ const Notfound: React.FC = () => {
               <img src="./logo192.png" alt="" />
               <h2>Not Found</h2>
               <p>A place to be more productive and accountable</p>
-              <a href="/keeptabs/home"> Get Back In</a>
+              <Link to="/keeptabs/home"> Get Back In</Link>
             </div>
           </div>
         </div>
